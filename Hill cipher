@@ -1,0 +1,31 @@
+public class H {
+    static int m(int x){return(x%26+26)%26;}
+
+    static String e(String t,int[][]k){
+        t=t.toUpperCase(); if(t.length()%2>0)t+="X";
+        String r=""; 
+        for(int i=0;i<t.length();i+=2){
+            int a=t.charAt(i)-'A', b=t.charAt(i+1)-'A';
+            r+=(char)('A'+m(a*k[0][0]+b*k[0][1]));
+            r+=(char)('A'+m(a*k[1][0]+b*k[1][1]));
+        }
+        return r;
+    }
+
+    static String d(String t,int[][]k){
+        int d=m(k[0][0]*k[1][1]-k[0][1]*k[1][0]),inv=0;
+        for(int i=0;i<26;i++) if(m(d*i)==1) inv=i;
+        int[][]ik={
+            {m(k[1][1]*inv),m(-k[0][1]*inv)},
+            {m(-k[1][0]*inv),m(k[0][0]*inv)}
+        };
+        return e(t,ik);
+    }
+
+    public static void main(String[]a){
+        int[][]k={{3,3},{2,5}};
+        String t="HELLO";
+        String x=e(t,k), y=d(x,k);
+        System.out.println(x+"\n"+y);
+    }
+}
