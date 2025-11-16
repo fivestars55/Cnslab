@@ -1,0 +1,20 @@
+import javax.crypto.*;
+import javax.crypto.spec.*;
+import java.util.*;
+
+class BlowfishMini {
+    public static void main(String[] args) throws Exception {
+
+        Cipher c = Cipher.getInstance("Blowfish");
+        SecretKeySpec k = new SecretKeySpec("key12345".getBytes(), "Blowfish");
+
+        c.init(Cipher.ENCRYPT_MODE, k);
+        String enc = Base64.getEncoder().encodeToString(c.doFinal("Hi".getBytes()));
+
+        c.init(Cipher.DECRYPT_MODE, k);
+        String dec = new String(c.doFinal(Base64.getDecoder().decode(enc)));
+
+        System.out.println(enc);
+        System.out.println(dec);
+    }
+}
