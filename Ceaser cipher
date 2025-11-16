@@ -1,0 +1,22 @@
+public class C {
+    static String f(String s, int k) {
+        String r = "";
+        for (char c : s.toCharArray()) {
+            r += Character.isLetter(c)
+                 ? (char)((c & 32) + ((c & 31) + k) % 26 + ('A' - 1))
+                 : c;
+        }
+        return r;
+    }
+
+    public static void main(String[] a) {
+        String t = "HELLO";
+        int k = 3;
+
+        String e = f(t, k);
+        String d = f(e, 26 - k);
+
+        System.out.println(e);
+        System.out.println(d);
+    }
+}
