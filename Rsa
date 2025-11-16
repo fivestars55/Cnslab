@@ -1,0 +1,16 @@
+import java.math.*;
+
+class R {
+    public static void main(String[] x) {
+        BigInteger p = new BigInteger("61"), q = new BigInteger("53");
+        BigInteger n = p.multiply(q);
+        BigInteger phi = p.subtract(BigInteger.ONE).multiply(q.subtract(BigInteger.ONE));
+        BigInteger e = new BigInteger("17"), d = e.modInverse(phi);
+        BigInteger m = new BigInteger("65");
+        BigInteger c = m.modPow(e, n);
+        BigInteger dec = c.modPow(d, n);
+
+        System.out.println("Cipher = " + c);
+        System.out.println("Decrypted = " + dec);
+    }
+}
