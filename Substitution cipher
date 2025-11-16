@@ -1,0 +1,22 @@
+public class S {
+    static String f(String s, String k, boolean e) {
+        String r = "";
+        for (char c : s.toCharArray())
+            r += (c >= 'A' && c <= 'Z')
+                 ? (e ? k.charAt(c - 'A')
+                      : (char)('A' + k.indexOf(c)))
+                 : c;
+        return r;
+    }
+
+    public static void main(String[] a) {
+        String t = "HELLO";
+        String k = "QWERTYUIOPASDFGHJKLZXCVBNM";
+
+        String enc = f(t, k, true);
+        String dec = f(enc, k, false);
+
+        System.out.println(enc);
+        System.out.println(dec);
+    }
+}
