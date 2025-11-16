@@ -1,16 +1,12 @@
-import java.math.*;
+import javax.crypto.*;
+import javax.crypto.spec.*;
 
-class R {
-    public static void main(String[] x) {
-        BigInteger p = new BigInteger("61"), q = new BigInteger("53");
-        BigInteger n = p.multiply(q);
-        BigInteger phi = p.subtract(BigInteger.ONE).multiply(q.subtract(BigInteger.ONE));
-        BigInteger e = new BigInteger("17"), d = e.modInverse(phi);
-        BigInteger m = new BigInteger("65");
-        BigInteger c = m.modPow(e, n);
-        BigInteger dec = c.modPow(d, n);
-
-        System.out.println("Cipher = " + c);
-        System.out.println("Decrypted = " + dec);
-    }
+class A {
+  public static void main(String[] a) throws Exception {
+    byte[] k="1234567890123456".getBytes(), p="hello_AES_block!".getBytes();
+    Cipher c=Cipher.getInstance("AES/ECB/NoPadding");
+    c.init(Cipher.ENCRYPT_MODE,new SecretKeySpec(k,"AES"));
+    byte[] e=c.doFinal(p);
+    for(byte b:e) System.out.print(String.format("%02X",b));
+  }
 }
