@@ -1,0 +1,15 @@
+import java.security.*;
+public class S {
+    static String hex(byte[] b) {
+        StringBuilder r = new StringBuilder();
+        for (byte x : b)
+            r.append(String.format("%02x", x & 0xff));
+        return r.toString();
+    }
+
+    public static void main(String[] a) throws Exception {
+        String t = a.length > 0 ? String.join(" ", a) : "hello";
+        byte[] d = MessageDigest.getInstance("SHA-1").digest(t.getBytes("UTF-8"));
+        System.out.println(hex(d));
+    }
+}
