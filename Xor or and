@@ -1,0 +1,14 @@
+#include<stdio.h>
+int main(){
+    char s[]="Hello world", t[50];
+    int i;
+
+    for(i=0;s[i];i++) t[i]=s[i]^127; t[i]=0;
+    printf("XOR : %s\n", t);
+
+    for(i=0;s[i];i++) t[i]=s[i]&127; t[i]=0;
+    printf("AND : %s\n", t);
+
+    for(i=0;s[i];i++) t[i]=s[i]|127; t[i]=0;
+    printf("OR  : %s\n", t);
+}
