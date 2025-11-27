@@ -1,0 +1,41 @@
+import java.security.MessageDigest;
+import java.util.Scanner;
+
+public class SHA {
+    public static void main(String[] args) throws Exception {
+
+        // create SHA-1 message digest
+        MessageDigest digest = MessageDigest.getInstance("SHA-1");
+
+        // input message
+        System.out.println("Enter the string: ");
+        Scanner sc = new Scanner(System.in);
+        String text = sc.nextLine();
+
+        // compute hash
+        byte[] hash = digest.digest(text.getBytes());
+
+        // convert to hex string
+        String hexHash = bytesToHex(hash);
+
+        System.out.println("Original text: " + text);
+        System.out.println("SHA-1 Hash: " + hexHash);
+
+        sc.close();
+    }
+
+    // convert byte array to hexadecimal string
+    private static String bytesToHex(byte[] bytes) {
+        StringBuilder hexString = new StringBuilder();
+
+        for (byte b : bytes) {
+            String hex = Integer.toHexString(0xff & b);
+            if (hex.length() == 1) {
+                hexString.append('0');
+            }
+            hexString.append(hex);
+        }
+
+        return hexString.toString();
+    }
+}
