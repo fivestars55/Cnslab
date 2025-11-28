@@ -1,0 +1,136 @@
+## **(C) Hill Cipher**
+
+### **Algorithm:**
+
+→ Read the plain text and key from the user, split the plain text into groups of length three. Arrange the keyword in a 3×3 matrix.
+→ Multiply the two matrices and perform mod 26 to obtain the cipher text of length three. Combine all these groups to get the complete cipher text.
+→ In order to decrypt the cipher text into plain text, find inverse of key matrix and multiply it with cipher text, perform mod 26 on obtained matrix. Hence plain text is obtained.
+
+---
+
+## **4. Aim:**
+
+Write a C/Java program to implement the DES algorithm logic.
+
+### **Algorithm:**
+
+The main parts of the algorithm are as follows:
+→ Fractioning of the text into 64-bit blocks
+→ Initial permutation of blocks
+→ Breakdown of the blocks into two parts: left and right named L and R
+→ Permutation and substitution steps repeated 16 times
+→ Re-joining of the left and right parts then inverse initial permutation general structure of DES is depicted in the following illustration.
+
+---
+
+## **5. Aim:**
+
+Write a C/Java program to implement the Blowfish algorithm logic.
+
+### **Algorithm: Blowfish Encryption**
+
+Divide x into two 32-bit halves: xL, xR
+
+For i = 1 to 16:
+xL = xL XOR Pi
+xR = F(xL) XOR xR
+Swap xL and xR (undo the last swap)
+
+xR = xR XOR P17
+xL = xL XOR P18
+Recombine xL and xR
+
+---
+
+## **6. Aim:**
+
+Write a Java program to implement the Rijndael algorithm logic.
+
+### **Algorithm:**
+
+The algorithm Rijndael allows for a variety of block and key sizes and not just the 64 and 56 bits of DES block and key size. The AES states that the algorithm can only accept a block size of 128 bits and a choice of three keys - 128, 192, 256 bits.
+
+The algorithm begins with an add round key stage followed by 9 rounds of four stages and a tenth round of three stages. This applies for both encryption and decryption with the exception that each stage of a round in the decryption algorithm is the inverse of its counterpart in the encryption algorithm.
+
+Four stages are as follows:
+
+1. Substitute bytes
+2. Shift rows
+3. Mix columns
+4. Add round key
+
+---
+
+## **8. Aim:**
+
+Write a Java program to implement RSA algorithm.
+
+### **Algorithm:**
+
+→ Read P, Q that are prime numbers and P ≠ Q
+→ Calculate n = P × Q
+→ Calculate ϕ(n) = (P − 1)(Q − 1)
+→ Select integer e that is prime to ϕ(n) and less than ϕ(n)
+i.e., select e with gcd(ϕ(n), e) = 1; 1 < e < ϕ(n)
+→ Calculate d = e⁻¹ mod ϕ(n)
+→ Cipher text c = Mᵉ mod n
+→ Plain text M = cᵈ mod n
+→ PUA = {e, n}
+→ PRA = {d, n}
+
+---
+
+## **9. Aim:**
+
+Implement the Diffie-Hellman key exchange mechanism using HTML and JavaScript.
+
+### **Algorithm:**
+
+→ Both Alice and Bob share the same public keys g and p.
+→ Alice selects a random public key a.
+→ Alice computes her secret key A as gᵃ mod p
+→ Then Alice sends A to Bob
+→ Similarly Bob also selects a public key b and computes his secret key as B and sends the same back to Alice.
+→ Now both of them compute their common secret key as the other one's secret key powered of a mod p.
+
+### Global public elements:
+
+1. User A key generation
+2. User B key generation
+3. Calculation of secret key by user A
+4. Calculation of secret key by user B
+
+---
+
+## **10. Aim:**
+
+Calculate the message digest of a text using the SHA-1 algorithm in Java.
+
+### **Algorithm:**
+
+→ Read the 256-bit key values
+→ Divide into five equal sized blocks named A, B, C, D and E
+→ The blocks B, C and D are passed to the function F
+→ The resultant value is permuted with block E
+→ The block A is shifted right by 1's times and permuted with the result of Step-4
+→ Then it is permuted with a weight value and then with some other key pair and taken as the first block
+→ Block A taken as the second block and the block B shifted by 1's times and taken as the third block
+→ The blocks C and D are taken as the block D and E for the final output
+
+---
+
+## **11. Aim:**
+
+Calculate the message digest of a text using the MD5 algorithm in Java.
+
+### **Algorithm:**
+
+→ Read the 128-bit plain text
+→ Divide into four blocks of 32-bits named as A, B, C and D
+→ Complete the functions f, g, h and i with operations such as rotations, permutations, etc.
+→ The output of these functions are combined together as F and performed circular shifting and then given to key round
+→ Finally, right shift of 1’s times are performed and the results are combined together to produce the final output.
+
+---
+
+If you'd like, I can convert this into a **PDF**, **Word file**, **clean formatted notes**, or **separate sections** for each algorithm.
