@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Diffie-Hellman Key Exchange</title>
+</head>
+<body>
+<h2>Diffie-Hellman Key Exchange</h2>
+
+<button onclick="runDiffieHellman()">Run</button>
+<div id="output"></div>
+
+<script>
+// Modular exponentiation
+function modExp(base, exponent, modulus) {
+    let result = 1n;
+    base = base % modulus;
+    while (exponent > 0) {
+        if (exponent % 2n === 1n) result = (result * base) % modulus;
+        exponent /= 2n;
+        base = (base * base) % modulus;
+    }
+    return result;
+}
+
+function runDiffieHellman() {
+    const prime = 23n;           // Public prime number
+    const generator = 5n;        // Public generator
+
+    const alicePrivate = 6n;     // Alice's private key
+    const bobPrivate = 15n;      // Bob's private key
+
+    const alicePublic = modExp(generator, alicePrivate, prime); // Alice's public key
+    const bobPublic = modExp(generator, bobPrivate, prime);     // Bob's public key
+
+    const sharedKeyAlice = modExp(bobPublic, alicePrivate, prime); // Alice computes shared key
+    const sharedKeyBob = modExp(alicePublic, bobPrivate, prime);   // Bob computes shared key
+
+    document.getElementById("output").innerHTML = `
+        Prime = ${prime}<br>
+        Generator = ${generator}<br><br>
+        Alice Private Key = ${alicePrivate}<br>
+        Bob Private Key = ${bobPrivate}<br><br>
+        Alice Public Key = ${alicePublic}<br>
+        Bob Public Key = ${bobPublic}<br><br>
+        Shared Key (Alice) = ${sharedKeyAlice}<br>
+        Shared Key (Bob) = ${sharedKeyBob}<br><br>
+        <b>Final Shared Key = ${sharedKeyAlice}</b>
+    `;
+}
+</script>
+</body>
+</html>
